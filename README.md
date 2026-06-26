@@ -1,7 +1,5 @@
-<center>
-    <h1>pdv-simples</h1>
-</center>
----
+# PDV Simples
+
 ## Apresentação
 
 Minha mãe possui uma loja que não possui nenhum software para gerênciar estoque, calcular o faturamentos, analisar os dados, etc...
