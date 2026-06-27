@@ -19,4 +19,4 @@ Tendo em visto esse problema, busco desenvolver um programa que cumpre esses pap
     - NodeJs
 
 > [!NOTE]
-> Este projeto visa desenvolver uma base sólida, então serão evitado o uso de Biblioteca externas, porém posso utilizar se necessário.
+> Este projeto visa desenvolver uma base sólida, então serão evitado o uso de bibliotecas externas, porém posso utilizar se necessário.
