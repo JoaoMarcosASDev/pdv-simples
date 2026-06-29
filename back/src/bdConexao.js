@@ -2,7 +2,7 @@ import { DatabaseSync } from "node:sqlite";
 
 try {
     const db = new DatabaseSync(
-        "../bd/banco_de_dados.db"
+       process.env.URL_DB 
     );
 } catch (err) {
     console.error(err);
