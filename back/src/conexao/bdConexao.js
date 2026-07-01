@@ -1,4 +1,4 @@
-import { DatabaseSync } from "node:sqlite";
+/*import { DatabaseSync } from "node:sqlite";
 
 try {
     const db = new DatabaseSync(
@@ -6,4 +6,6 @@ try {
     );
 } catch (err) {
     console.error(err);
-}
+}*/
+
+export default [];
