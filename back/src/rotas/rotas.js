@@ -1,4 +1,4 @@
-import produtos from "./produtos/ProdutosRota.js"
+import Produtos from "./produtos/ProdutosRota.js"
 
 const rotasArr = ["Produtos"]
 const rotasClass = {
@@ -15,7 +15,7 @@ function rotasMethod(mtd, rotaClass) {
     return methods[mtd];
 }
 export default (method, path, content = undefined) => {
-    //Verifica qual é o caminho do endpoint
+    // Verifica qual é o caminho do endpoint
     if (!rotasArr[path]) {
         const rotaCl = rotasClass[path];
         //Chama o method adequado

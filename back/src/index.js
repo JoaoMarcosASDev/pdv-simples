@@ -5,6 +5,8 @@ const porta = 8000;
 
 const server = createServer((req, res) => {
     let msg = "";
+    // Trabalhar nisso
+     rotas(req.method, req.url);
 });
 
 server.listen(porta, () =>
