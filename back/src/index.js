@@ -4,9 +4,7 @@ import rotas from "./rotas/rotas.js"
 const porta = 8000;
 
 const server = createServer((req, res) => {
-    let msg = "";
-    // Trabalhar nisso
-     rotas(req.method, req.url);
+     rotas(req.method, req.url, res);
 });
 
 server.listen(porta, () =>

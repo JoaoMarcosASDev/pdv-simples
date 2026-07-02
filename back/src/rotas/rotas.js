@@ -1,24 +1,28 @@
 import Produtos from "./produtos/ProdutosRota.js"
 
-const rotasArr = ["Produtos"]
+const rotasArr = ["produtos"]
 const rotasClass = {
-    produto: Produtos
+    "/produtos": Produtos
 }
 
 function rotasMethod(mtd, rotaClass) {
     const methods = {
-        "GET": rotaClass.get(),
-        "POST": rotaClass.post(),
+        "GET": rotaClass.get,
+/*        "POST": rotaClass.post(),
         "PUT": rotaClass.put(),
         "DELETE": rotaClass.delete()
+        */
     };
     return methods[mtd];
 }
-export default (method, path, content = undefined) => {
+
+export default (method, path, response, content = undefined) => {
     // Verifica qual é o caminho do endpoint
-    if (!rotasArr[path]) {
+    if (rotasClass[path]) {
         const rotaCl = rotasClass[path];
-        //Chama o method adequado
-        rotasMethod(method, rotaCl);
+        // Escolhe o method adequado
+        const methodVerb = rotasMethod(method, rotaCl);
+        // Coloca os parametros
+        methodVerb(response);
     }
 }
