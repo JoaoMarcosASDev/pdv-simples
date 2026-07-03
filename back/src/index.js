@@ -1,10 +1,10 @@
 import { createServer } from "http";
-import rotas from "./rotas/rotas.js"
+import gRotas from "./rotas/gerenciaRotas.js";
 
 const porta = 8000;
 
 const server = createServer((req, res) => {
-     rotas(req.method, req.url, res);
+     gRotas(req.method, req.url, res);
 });
 
 server.listen(porta, () =>

@@ -1,8 +1,8 @@
-import Produtos from "./produtos/ProdutosRota.js"
+import ProdutosRota from "./produtos/ProdutosRota.js"
 
 const rotasArr = ["produtos"]
 const rotasClass = {
-    "/produtos": Produtos
+    "/produtos": ProdutosRota
 }
 
 const rotasMethod = (mtd, rotaClass) => {
@@ -13,16 +13,21 @@ const rotasMethod = (mtd, rotaClass) => {
         "DELETE": rotaClass.delete()
         */
     };
+
+    // Retorna o método requisitado
     return methods[mtd];
 }
 
-export default (method, path, response, content = undefined) => {
+export default (method, endpoint, response, content = undefined) => {
+
     // Verifica qual é o endpoint
-    if (rotasClass[path]) {
-        const rotaCl = rotasClass[path];
+    if (rotasClass[endpoint]) {
+        const rotaCl = rotasClass[endpoint];
+
         // Escolhe o method adequado
         const methodVerb = rotasMethod(method, rotaCl);
-        // Coloca os parametros
+
+        // Adiciona os parâmetros
         methodVerb(response);
     }
 }

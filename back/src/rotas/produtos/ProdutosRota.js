@@ -1,14 +1,15 @@
 import bd from "../../conexao/bdConexao.js";
+import IRota from "../IRota.js";
 
 /**
  * Atende aos métodos HTTP requesitados no endpoint `produtos`
  * @namespace ProdutosRotas
  */
-export default new class ProdutosRotas {
+export default new class ProdutosRotas extends IRota {
     /**
      * Retorna o get sem requisitar paramatros, retornando a página ao cliente
-     * @method get
-     * @param {http.ServerResponee}
+     * @method GET
+     * @param {http.ServerResponse}
      */
     get(response) {
         const msg = "Página produtos\n";
