@@ -5,7 +5,7 @@ const rotasClass = {
     "/produtos": Produtos
 }
 
-function rotasMethod(mtd, rotaClass) {
+const rotasMethod = (mtd, rotaClass) => {
     const methods = {
         "GET": rotaClass.get,
 /*        "POST": rotaClass.post(),
@@ -17,7 +17,7 @@ function rotasMethod(mtd, rotaClass) {
 }
 
 export default (method, path, response, content = undefined) => {
-    // Verifica qual é o caminho do endpoint
+    // Verifica qual é o endpoint
     if (rotasClass[path]) {
         const rotaCl = rotasClass[path];
         // Escolhe o method adequado

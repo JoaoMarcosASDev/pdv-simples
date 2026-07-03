@@ -1,7 +1,15 @@
 import bd from "../../conexao/bdConexao.js";
 
+/**
+ * Atende aos métodos HTTP requesitados no endpoint `produtos`
+ * @namespace ProdutosRotas
+ */
 export default new class ProdutosRotas {
-    // Chegou na rota produtos
+    /**
+     * Retorna o get sem requisitar paramatros, retornando a página ao cliente
+     * @method get
+     * @param {http.ServerResponee}
+     */
     get(response) {
         const msg = "Página produtos\n";
         const headers = {
