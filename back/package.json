@@ -9,6 +9,11 @@
   "scripts": {
     "start": "node --env-file-if-exists=.env ./src/index.js"
   },
+  "imports": {
+    "#bdConexao/*.js": "./src/bdConexao/*.js",
+    "#rotas/": "./src/rotas/",
+    "#rotas/*.js": "./src/rotas/*.js"
+  },
   "devDependencies": {
     "jsdoc": "^4.0.5"
   }

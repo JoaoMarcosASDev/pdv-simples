@@ -1,4 +1,4 @@
-import ProdutosRota from "./produtos/ProdutosRota.js"
+import ProdutosRota from "#rotas/produtos/ProdutosRota.js"
 
 const rotasArr = ["produtos"]
 const rotasClass = {

@@ -1,5 +1,5 @@
 import { createServer } from "http";
-import gRotas from "./rotas/gerenciaRotas.js";
+import gRotas from "#rotas/gerenciaRotas.js";
 
 const porta = 8000;
 
