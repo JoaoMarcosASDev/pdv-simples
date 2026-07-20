@@ -1,11 +1,11 @@
 import { createServer } from "http";
-import gRotas from "#rotas/gerenciaRotas.js";
+import GerenciaRotas from "#rotas/GerenciaRotas.js";
 
-const porta = 8000;
+const port = 3000;
 
 const server = createServer((req, res) => {
-     gRotas(req.method, req.url, res);
+    const router = new GerenciaRotas(req.method, req.url, res);
 });
 
-server.listen(porta, () =>
-    console.log(`Escutando na porta ${ porta }`));
+server.listen(port, () =>
+    console.log(`Escutando na port ${ port }`));

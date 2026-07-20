@@ -14,7 +14,7 @@ export default new class ProdutosRotas {
         const msg = "Página produtos\n";
         const headers = {
             "Content-Type": "text/plain",
-            "Content-Length": msg.length,
+            "Content-Length": Buffer.byteLength(msg),
         };
         response.writeHead(200, headers).end(msg);
     }
