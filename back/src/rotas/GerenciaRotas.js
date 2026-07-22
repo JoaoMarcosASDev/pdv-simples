@@ -1,4 +1,5 @@
 import ProdutosRota from "#rotas/produtos/ProdutosRota.js";
+import RootRoute from "#rotas/root/RootRoute.js";
 
 export default class GerenciaRotas {
     // Private propetiers/verbs
@@ -9,6 +10,7 @@ export default class GerenciaRotas {
 
     #endpoints = {
         // "/": obj
+        "/": RootRoute,
         "/produtos": ProdutosRota
     }
 
