@@ -1,16 +1,14 @@
-import UtilsError from '#modelValidations/errors/UtilsError.js';
-
 export default class {
-    static isBetweenMinMaxRange(num, min, max) {
-        let errorObj;
-
+    static isBetweenMinMaxRange(num, minNum, maxNum) {
         if(typeof num !== 'number')
-            throw new TypeError(UtilsError.typeErrorTemplateMessage('num', 'number'));
-        else if(typeof min !=='number')
-            throw new TypeError(UtilsError.typeErrorTemplateMessage('min', 'number'));
-        else if(typeof max !== 'number')
-            throw new TypeError(UtilsError.typeErrorTemplateMessage('max', 'number'));
+            throw new TypeError(msgStr('num', 'number'));
+
+        else if(typeof minNum !=='number')
+            throw new TypeError(`The "minNum" argument must be a number type. Argument received "${ typeof minNum }".`);
+
+        else if(typeof maxNum !== 'number')
+            throw new TypeError(`The "maxNum" argument must be a number type. Argument received "${ typeof maxNum }".`);
         
-        return num <= max && num >= min;
+        return num <= maxNum && num >= minNum;
     }
 }

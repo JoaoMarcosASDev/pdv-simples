@@ -12,7 +12,7 @@ export default class {
         else if(!name) 
             throw new NotNullError(`The ${fieldName} field must be filled out.`);
         else if(!Helpers.isBetweenMinMaxRange(name.length, nameObj.minCharactLength, nameObj.maxCharactLength))
-            throw new RangeError(`Invalid Character length in name field. it must have ${nameObj.minCharactLength} and ${nameObj.maxCharactLength}, but the character length is ${name.length}.`);
+            throw new RangeError(`Invalid Character length in ${ fieldName } field. it must have ${ nameObj.minCharactLength } and ${ nameObj.maxCharactLength }, but the character length is ${ name.length }.`);
     }
 
     static validateQuantity(quantity) {
@@ -20,29 +20,29 @@ export default class {
         const quatObj = productEntity.quantity;
 
         if(typeof quantity === 'undefined')
-            throw new NotNullError(`The ${fieldName} field must be filled out.`);
+            throw new NotNullError(`The ${ fieldName } field must be filled out.`);
         else if(typeof quantity !== quatObj.type) 
-            throw new TypeError(`The ${fieldName} field must be a number type.`);
+            throw new TypeError(`The ${ fieldName } field must be a number type.`);
         else if(Number.isNaN(quantity))
             throw new Error(`NaN is an invalid value! It must be a number greater than or equal to ${quatObj.minQuantity}.`);
         else if(!Number.isInteger(quantity))
-            throw new RangeError(`The ${fieldName} must be a integer number.`);
+            throw new RangeError(`The ${ fieldName } must be a integer number.`);
         else if(quantity < quatObj.minQuantity)
-            throw new RangeError(`The ${fieldName} must be greater than or equal to ${quatObj.minQuantity}.`);
+            throw new RangeError(`The ${ fieldName } must be greater than or equal to ${quatObj.minQuantity}.`);
     }
 
     static validateCount(count) {
         const fieldName = 'count';
         const countObj = productEntity.count;
 
-        if(typeof count === 'undefined')
-            throw new NotNullError(`The ${fieldName} field must be filled out.`);
+        if(count === undefined)
+            throw new NotNullError(`The ${ fieldName } field must be filled out.`);
         else if(typeof count !== countObj.type)
-            throw new TypeError(`The ${fieldName} field must be a number type.`);
+            throw new TypeError(`The ${ fieldName } field must be a number type.`);
         else if(Number.isNaN(count))
             throw new Error(`NaN is an invalid value! It must be a number greater than or equal to ${countObj.minQuantity}.`);
         else if(!Number.isInteger(count))
-            throw new RangeError(`The ${fieldName} must be a integer number.`);
+            throw new RangeError(`The ${ fieldName } must be a integer number.`);
         else if(count < countObj.minQuantity)
             throw new RangeError(`The ${fieldName} must be greater than or equal to ${countObj.minQuantity}.`);
     }
@@ -51,7 +51,7 @@ export default class {
         const fieldName = 'weight';
         const weightObj = productEntity.weight;
 
-        if(typeof  weight === 'undefined')
+        if(typeof weight === 'undefined')
             throw new NotNullError(`The ${fieldName} field must be filled out.`);
 
         else if(typeof weight !== weightObj.type)
@@ -64,19 +64,21 @@ export default class {
             throw new RangeError(`The ${fieldName} must be greater than or equal to ${weightObj.minQuantity}.`);
     }
     
-    static tags(...tagsArr) {
-        const tagsObj = productEntity.tags;
+    //Futuramente implementar as relações com a tabela de tag
+    static validateTags(...tagsArr) {
         const fieldName = 'tags';
+        const tagsObj = productEntity.tags;
         
-        if(typeof tagsArr[0] === undefined)
-            throw new NotNullError(`The ${fieldName} field must be filled out.`);
-
         tagsArr.forEach((tag, index) => {
-            if(typeof tag !== 'string')
+            if(tag === undefined)
+                throw new NotNullError(`The ${fieldName} field must be filled out.`);
+
+            else if(typeof tag !== 'string')
                 throw new TypeError(`The ${fieldName} field must be string value(s).`)
 
-            else if(tag.length > tagsObj.minCharactLength))
-                throw new RangeError(`Invalid Character length in ${ fieldName } field. It must have ${ tagsObj.minCharactLength }, but the character length is ${ tag.length } in index item value ${ index }.`);
+            else if(!Helpers.isBetweenMinMaxRange(tag.length, tagsObj.minCharactLength, tagsObj.maxCharactLength)) {
+                throw new RangeError(`Invalid Character length in ${ fieldName } field. it must have ${ tagsObj.minCharactLength } and ${ tagsObj.maxCharactLength }, but the character length is ${ tag.length }.`);
+            }
         });
     }
 }

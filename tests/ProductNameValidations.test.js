@@ -55,7 +55,7 @@ describe('Testing name validation', (t) => {
             })
         });
 
-        it(`exceed character length (The max length is ${ name.maxCharactLength }) - Expected failure`, () => {
+        it(`Exceed character length (The max length is ${ name.maxCharactLength }) - Expected failure`, () => {
             throws(() => ProductValidations.validateName('Macarrao Bem Preparo, o melhor que voce vera na sua vida 500kg'), { name: 'RangeError' });
         });
     });

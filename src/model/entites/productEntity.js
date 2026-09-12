@@ -18,6 +18,7 @@ export default {
     },
     tags: {
         type: 'string',
-        minCharactLength: 20;
+        minCharactLength: 3,
+        maxCharactLength: 20
     }
 };
