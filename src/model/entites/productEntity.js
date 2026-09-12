@@ -15,5 +15,9 @@ export default {
     weight: {
         type: 'number',
         minQuantity: 0
+    },
+    tags: {
+        type: 'string',
+        minCharactLength: 20;
     }
 };

@@ -23,11 +23,11 @@ export default class {
             throw new NotNullError(`The ${fieldName} field must be filled out.`);
         else if(typeof quantity !== quatObj.type) 
             throw new TypeError(`The ${fieldName} field must be a number type.`);
-        if(Number.isNaN(quantity))
+        else if(Number.isNaN(quantity))
             throw new Error(`NaN is an invalid value! It must be a number greater than or equal to ${quatObj.minQuantity}.`);
         else if(!Number.isInteger(quantity))
             throw new RangeError(`The ${fieldName} must be a integer number.`);
-        if(quantity < quatObj.minQuantity)
+        else if(quantity < quatObj.minQuantity)
             throw new RangeError(`The ${fieldName} must be greater than or equal to ${quatObj.minQuantity}.`);
     }
 
@@ -39,11 +39,11 @@ export default class {
             throw new NotNullError(`The ${fieldName} field must be filled out.`);
         else if(typeof count !== countObj.type)
             throw new TypeError(`The ${fieldName} field must be a number type.`);
-        if(Number.isNaN(count))
+        else if(Number.isNaN(count))
             throw new Error(`NaN is an invalid value! It must be a number greater than or equal to ${countObj.minQuantity}.`);
         else if(!Number.isInteger(count))
             throw new RangeError(`The ${fieldName} must be a integer number.`);
-        if(count < countObj.minQuantity)
+        else if(count < countObj.minQuantity)
             throw new RangeError(`The ${fieldName} must be greater than or equal to ${countObj.minQuantity}.`);
     }
 
@@ -51,14 +51,32 @@ export default class {
         const fieldName = 'weight';
         const weightObj = productEntity.weight;
 
-        console.log(weightObj);
         if(typeof  weight === 'undefined')
             throw new NotNullError(`The ${fieldName} field must be filled out.`);
+
         else if(typeof weight !== weightObj.type)
             throw new TypeError(`The ${fieldName} field must be a number type.`);
-        if(Number.isNaN(weight))
+
+        else if(Number.isNaN(weight))
             throw new Error(`NaN is an invalid value! It must be a number greater than or equal to ${weightObj.minQuantity}.`);
-        if(weight < weightObj.minQuantity)
+
+        else if(weight < weightObj.minQuantity)
             throw new RangeError(`The ${fieldName} must be greater than or equal to ${weightObj.minQuantity}.`);
+    }
+    
+    static tags(...tagsArr) {
+        const tagsObj = productEntity.tags;
+        const fieldName = 'tags';
+        
+        if(typeof tagsArr[0] === undefined)
+            throw new NotNullError(`The ${fieldName} field must be filled out.`);
+
+        tagsArr.forEach((tag, index) => {
+            if(typeof tag !== 'string')
+                throw new TypeError(`The ${fieldName} field must be string value(s).`)
+
+            else if(tag.length > tagsObj.minCharactLength))
+                throw new RangeError(`Invalid Character length in ${ fieldName } field. It must have ${ tagsObj.minCharactLength }, but the character length is ${ tag.length } in index item value ${ index }.`);
+        });
     }
 }

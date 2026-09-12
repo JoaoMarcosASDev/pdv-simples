@@ -29,7 +29,7 @@ export default class {
             quantity           INTEGER    NOT NULL      CHECK (quantity >= 0),
             count              INTEGER                  CHECK(count >= 0),
             weight              REAL                    CHECK(weight >= 0),
-            tags                TEXT                    CHECK(length(tags) <= 20),
+            tags                TEXT      NOT NULL      CHECK(length(tags) <= 20),
             sku                 TEXT                    CHECK(length(sku) = 6),
             CONSTRAINT ch_sku_must_not_contains_numbers CHECK(NOT CONTAINSNUM(sku))
          ) STRICT;
